@@ -19,6 +19,7 @@ Then send the form data in the JSON body:
         -X POST \
         http://localhost:1234/api/v1/forms/some-random-key \
         -H 'Content-Type: application/json' \
+        -H 'Origin: http://localhost:8080' \
         -d '{"name":"Joe","email":"joe@example.com", "subject": "Some subject", "content": "Maecenas faucibus mollis interdum. Sed posuere consectetur est at lobortis."}'
 
 

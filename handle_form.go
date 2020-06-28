@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	"github.com/neko-neko/echo-logrus/log"
 )
 
 func (m *MailBear) handleForm(c echo.Context) error {
@@ -26,10 +25,16 @@ func (m *MailBear) handleForm(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}
 
+	// check if domain allowed
+	origin := c.Request().Header.Get("Origin")
+	form := m.getFormByID(data.FormID)
+	if !form.OriginDomainAllowed(origin) {
+		return c.JSON(http.StatusForbidden, "you're not allowed to send from this domain")
+	}
+
 	// send the mail
 	err := m.SendMail(data)
 	if err != nil {
-		log.Warnf("couldn't send mail: %v", err)
 		return c.JSON(http.StatusInternalServerError, "couldn't send the mail")
 	}
 

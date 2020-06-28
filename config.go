@@ -1,5 +1,9 @@
 package mailbear
 
+import (
+	"net/url"
+)
+
 // Config represents the complete app config of Mail Bear.
 //
 // Global contains all the global configurations
@@ -24,7 +28,31 @@ type Config struct {
 
 // Form represents the form in the config
 type Form struct {
-	FormKey  string `yaml:"form_key"`
-	FormCors string `yaml:"form_cors"`
-	ToEmail  string `yaml:"to_email"`
+	FormKey        string   `yaml:"form_key"`
+	AllowedDomains []string `yaml:"allowed_domains"`
+	ToEmail        string   `yaml:"to_email"`
+}
+
+// OriginDomainAllowed checks whether the given origin is allowed to access the form.
+func (form *Form) OriginDomainAllowed(origin string) bool {
+
+	if origin == "" {
+		return false
+	}
+
+	u, err := url.Parse(origin)
+	if err != nil {
+		return false
+	}
+	originDomain := u.Host
+
+	for _, allowedDomain := range form.AllowedDomains {
+		if allowedDomain == "*" {
+			return true
+		}
+		if allowedDomain == originDomain {
+			return true
+		}
+	}
+	return false
 }

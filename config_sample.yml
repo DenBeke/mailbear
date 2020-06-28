@@ -14,5 +14,7 @@ global:
 forms:
     some-form-name:
         form_key: some-random-key
-        form_cors: "*"
+        allowed_domains:
+            - "localhost:8080"
+            - "example.com"
         to_email: recepient@example.com
