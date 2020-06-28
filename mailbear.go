@@ -16,7 +16,7 @@ type MailBear struct {
 func (m *MailBear) formExists(formID string) bool {
 
 	for _, form := range m.config.Forms {
-		if form.FormKey == formID {
+		if form.Key == formID {
 			return true
 		}
 	}
@@ -28,7 +28,7 @@ func (m *MailBear) formExists(formID string) bool {
 func (m *MailBear) getFormByID(formID string) *Form {
 
 	for _, form := range m.config.Forms {
-		if form.FormKey == formID {
+		if form.Key == formID {
 			return &form
 		}
 	}

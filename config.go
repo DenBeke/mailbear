@@ -28,7 +28,7 @@ type Config struct {
 
 // Form represents the form in the config
 type Form struct {
-	FormKey        string   `yaml:"form_key"`
+	Key            string   `yaml:"key"`
 	AllowedDomains []string `yaml:"allowed_domains"`
 	ToEmail        string   `yaml:"to_email"`
 }
