@@ -3,17 +3,61 @@
 **⚠️ WIP ⚠️**
 
 MailBear is an open source, self hosted forms backend.
-Just do a post request to API with some form data, and MailBear will make sure the submission is sent to you via mail!
+Just do a post request to the API with some form data, and MailBear will make sure the submission is sent to you via mail!
 
 MailBear will always hide the email address of the recepient, since the forms are accessed by a unique key.
 
-## Development
+
+## Run with Docker
+
+You can easily run MailBear with Docker:
+
+Copy `config_sample.yml` to `config.yml` and run the server:
+
+    docker run -v $(PWD)/config.yml:/mailbear/config.yml denbeke/mailbear
+
+For your convenience I created a [docker-compose.yml](./docker-compose.yml) file.
+
+
+## Run in Development
 
 Copy `config_sample.yml` to `config.yml` and run the server:
 
     go run cmd/mailbear/main.go
 
-Then send the form data in the JSON body:
+
+
+## Configuration
+
+Configuration is very simple. Just create as many forms as you want in `config.yml`:
+
+
+    global:
+        smtp:
+            host: smtp.example.com
+            port: 25
+            user:
+            password:
+            disable_tls: true
+            from_email: no-reply@example.com
+            from_name: MailBear
+        http:
+            address: ":1234"
+    
+
+    forms:
+        some-form-name:
+            key: some-random-key
+            allowed_domains:
+                - "localhost:8080"
+                - "example.com"
+            to_email: recepient@example.com
+
+
+
+## Usage
+
+Once MailBear is running you can send requests with form data in the JSON body:
 
     curl \
         -X POST \
@@ -21,11 +65,6 @@ Then send the form data in the JSON body:
         -H 'Content-Type: application/json' \
         -H 'Origin: http://localhost:8080' \
         -d '{"name":"Joe","email":"joe@example.com", "subject": "Some subject", "content": "Maecenas faucibus mollis interdum. Sed posuere consectetur est at lobortis."}'
-
-
-## Run with Docker
-
-MailBear is published on Dockerhub as [denbeke/mailbear](https://hub.docker.com/repository/docker/denbeke/mailbear). Checkout [docker-compose.yml](./docker-compose.yml) to run it. (Don't forget to copy `config_sample.yml` to `config.yml`)
 
 
 ## Acknowledgements
