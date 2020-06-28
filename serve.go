@@ -3,6 +3,7 @@ package mailbear
 import (
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -31,6 +32,7 @@ func Serve(config *Config) {
 
 	e.HideBanner = true
 
+	// request logging
 	nekoLog.Logger().SetOutput(os.Stdout)
 	nekoLog.Logger().SetLevel(echoLog.INFO)
 	// nekoLog.Logger().SetFormatter(&logrus.JSONFormatter{
@@ -38,6 +40,9 @@ func Serve(config *Config) {
 	// })
 	e.Logger = nekoLog.Logger()
 	e.Use(logMiddleware.Logger())
+
+	// Rate limitting
+	e.Use(RateLimitMiddleware(1*time.Minute, 5))
 
 	// Cors
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
