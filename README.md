@@ -5,6 +5,7 @@
 MailBear is an open source, self hosted forms backend.
 Just do a post request to API with some form data, and MailBear will make sure the submission is sent to you via mail!
 
+MailBear will always hide the email address of the recepient, since the forms are accessed by a unique key.
 
 ## Development
 
