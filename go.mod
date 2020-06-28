@@ -3,6 +3,7 @@ module github.com/DenBeke/mailbear
 go 1.14
 
 require (
+	github.com/badoux/checkmail v0.0.0-20200623144435-f9f80cb795fa
 	github.com/labstack/echo/v4 v4.1.16
 	github.com/labstack/gommon v0.3.0
 	github.com/neko-neko/echo-logrus v1.1.0

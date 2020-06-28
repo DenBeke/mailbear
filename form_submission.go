@@ -1,6 +1,10 @@
 package mailbear
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/badoux/checkmail"
+)
 
 // FormSubmission represent a submitted form
 type FormSubmission struct {
@@ -31,7 +35,11 @@ func (f *FormSubmission) Validate() error {
 		return fmt.Errorf("id cannot be empty")
 	}
 
-	// TODO validate format of email
+	// Validate format of email
+	err := checkmail.ValidateFormat(f.Email)
+	if err != nil {
+		return fmt.Errorf("invalid email address: %v", err)
+	}
 
 	return nil
 }
