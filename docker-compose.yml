@@ -1,0 +1,10 @@
+version: "3"
+services:
+  mailbear:
+    container_name: mailbear
+    image: denbeke/mailbear
+    # build: .
+    ports:
+      - "1234:1234"
+    volumes: 
+      - ./config.yml:/mailbear/config.yml

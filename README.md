@@ -22,6 +22,10 @@ Then send the form data in the JSON body:
         -d '{"name":"Joe","email":"joe@example.com", "subject": "Some subject", "content": "Maecenas faucibus mollis interdum. Sed posuere consectetur est at lobortis."}'
 
 
+## Run with Docker
+
+MailBear is published on Dockerhub as [denbeke/mailbear](https://hub.docker.com/repository/docker/denbeke/mailbear). Checkout [docker-compose.yml](./docker-compose.yml) to run it. (Don't forget to copy `config_sample.yml` to `config.yml`)
+
 
 ## Acknowledgements
 
