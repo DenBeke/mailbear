@@ -54,7 +54,7 @@ func Serve(config *Config) {
 		return c.JSON(http.StatusOK, "Welcome to mail bear! 🐻")
 	})
 
-	g.POST("/forms/:id", m.handleForm)
+	g.POST("/form/:id", m.handleForm)
 
 	log.Println("Starting Mail Bear...")
 

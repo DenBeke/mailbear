@@ -62,7 +62,7 @@ Once MailBear is running you can send requests with form data in the JSON body:
 
     curl \
         -X POST \
-        http://localhost:1234/api/v1/forms/some-random-key \
+        http://localhost:1234/api/v1/form/some-random-key \
         -H 'Content-Type: application/json' \
         -H 'Origin: http://localhost:8080' \
         -d '{"name":"Joe","email":"joe@example.com", "subject": "Some subject", "content": "Maecenas faucibus mollis interdum. Sed posuere consectetur est at lobortis."}'
