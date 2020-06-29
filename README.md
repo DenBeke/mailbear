@@ -49,9 +49,10 @@ Configuration is very simple. Just create as many forms as you want in `config.y
         some-form-name:
             key: some-random-key
             allowed_domains:
-                - "localhost:8080"
-                - "example.com"
-            to_email: recepient@example.com
+                - localhost:8080
+                - example.com
+            to_email:
+                - recepient@example.com
 
 
 

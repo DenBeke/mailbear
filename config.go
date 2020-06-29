@@ -30,7 +30,7 @@ type Config struct {
 type Form struct {
 	Key            string   `yaml:"key"`
 	AllowedDomains []string `yaml:"allowed_domains"`
-	ToEmail        string   `yaml:"to_email"`
+	ToEmail        []string `yaml:"to_email"`
 }
 
 // OriginDomainAllowed checks whether the given origin is allowed to access the form.

@@ -63,7 +63,7 @@ func (m *MailBear) SendMail(formSubmission *FormSubmission) error {
 	// and send the email all in one step.
 	msg := mail.NewMessage()
 	msg.SetHeader("From", m.config.Global.SMTP.FromEmail /*, m.config.Global.SMTP.FromName */)
-	msg.SetHeader("To", form.ToEmail)
+	msg.SetHeader("To", form.ToEmail...)
 	msg.SetAddressHeader("Reply-To", formSubmission.Email, formSubmission.Name)
 	msg.SetHeader("Subject", fmt.Sprintf("New submission with subject: %s", formSubmission.Subject))
 	msg.SetBody("text/html", buildMailBody(formSubmission))
