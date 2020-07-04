@@ -31,7 +31,7 @@ func (f *FormSubmission) Validate() error {
 	}
 
 	// Validate ID, although it should always be set manually
-	if f.Content == "" {
+	if f.FormID == "" {
 		return fmt.Errorf("id cannot be empty")
 	}
 
