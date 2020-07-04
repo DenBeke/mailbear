@@ -1,5 +1,7 @@
 # 🐻 MailBear: Forms Backend
 
+[![Build Status](https://travis-ci.com/DenBeke/mailbear.svg?branch=master)](https://travis-ci.com/DenBeke/mailbear)
+
 **⚠️ WIP ⚠️**
 
 MailBear is an open source, self hosted forms backend.
