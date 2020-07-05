@@ -4,7 +4,6 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/DenBeke/mailbear)](https://goreportcard.com/report/github.com/DenBeke/mailbear)
 ![Docker Image Size (latest by date)](https://hub.docker.com/r/denbeke/mailbear)
 
-**⚠️ WIP ⚠️**
 
 MailBear is an open source, self hosted forms backend.
 Just do a post request to the API with some form data, and MailBear will make sure the submission is sent to you via mail!
