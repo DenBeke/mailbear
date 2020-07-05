@@ -89,19 +89,5 @@ func (m *MailBear) SendMail(formSubmission *FormSubmission) error {
 		return errors.Wrap(err, "couldn't send the email")
 	}
 
-	/*
-			err := smtp.SendMail(
-				fmt.Sprintf("%s:%d", m.config.Global.SMTP.Host, m.config.Global.SMTP.Port),
-				nil,
-				m.config.Global.SMTP.FromEmail,
-				[]string{form.ToEmail},
-				[]byte(formSubmission.Content),
-			)
-
-		if err != nil {
-			return errors.Wrap(err, "couldn't send the email")
-		}
-	*/
-
 	return nil
 }
