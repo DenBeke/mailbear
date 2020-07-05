@@ -23,6 +23,18 @@ func TestGetConfigFromFile(t *testing.T) {
 
 }
 
+func TestSampleConfigFileIsValid(t *testing.T) {
+
+	config, err := mailbear.GetConfigFromFile(configFile)
+
+	require.NoError(t, err, "should be able to parse config file")
+
+	err = config.Validate()
+
+	require.NoError(t, err, "sampel config file should be valid")
+
+}
+
 func TestGetConfigFromFileNotExists(t *testing.T) {
 
 	_, err := mailbear.GetConfigFromFile(nonExistingFile)

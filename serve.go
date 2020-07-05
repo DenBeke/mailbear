@@ -24,6 +24,12 @@ func constructHTTPError(err error) httpError {
 // Serve craftboard server
 func Serve(config *Config) {
 
+	// Validate config
+	err := config.Validate()
+	if err != nil {
+		log.Fatalf("Config file is not valid: %v", err)
+	}
+
 	// prep mailbear
 	m := &MailBear{config: config}
 
