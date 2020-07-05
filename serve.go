@@ -57,7 +57,7 @@ func Serve(config *Config) {
 
 	g := e.Group("/api/v1")
 	g.GET("/", func(c echo.Context) error {
-		return c.JSON(http.StatusOK, "Welcome to mail bear! 🐻")
+		return c.JSON(http.StatusOK, mailbearRespone("Welcome to mail bear! 🐻"))
 	})
 
 	g.POST("/form/:id", m.handleForm)
