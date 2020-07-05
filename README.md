@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/DenBeke/mailbear.svg?branch=master)](https://travis-ci.com/DenBeke/mailbear)
 [![Go Report Card](https://goreportcard.com/badge/github.com/DenBeke/mailbear)](https://goreportcard.com/report/github.com/DenBeke/mailbear)
-![![Docker Image Size (latest by date)](https://hub.docker.com/r/denbeke/mailbear)](https://img.shields.io/docker/image-size/denbeke/mailbear?sort=date)
+[![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/denbeke/mailbear?sort=date)](https://hub.docker.com/r/denbeke/mailbear)
 
 
 MailBear is an open source, self hosted forms backend.
