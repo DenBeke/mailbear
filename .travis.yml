@@ -10,4 +10,5 @@ deploy:
     skip_cleanup: true
     script: curl -sL https://git.io/goreleaser | bash
     on:
+      go: 1.14
       tags: true
