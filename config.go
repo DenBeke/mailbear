@@ -23,7 +23,7 @@ type Config struct {
 			Address string `yaml:"address"`
 		} `yaml:"http"`
 	} `yaml:"global"`
-	Forms map[string]Form `yaml:"forms"`
+	Forms map[string]*Form `yaml:"forms"`
 }
 
 // Form represents the form in the config

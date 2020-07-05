@@ -16,6 +16,10 @@ type MailBear struct {
 // formExists checks whether the given form exists in the config.
 func (m *MailBear) formExists(formID string) bool {
 
+	if m.config.Forms == nil {
+		return false
+	}
+
 	for _, form := range m.config.Forms {
 		if form.Key == formID {
 			return true
@@ -30,7 +34,7 @@ func (m *MailBear) getFormByID(formID string) *Form {
 
 	for _, form := range m.config.Forms {
 		if form.Key == formID {
-			return &form
+			return form
 		}
 	}
 
