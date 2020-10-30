@@ -18,14 +18,19 @@ FROM alpine:latest
 
 WORKDIR /
 
-COPY --from=build /mailbear /mailbear/
+# Copy executable
+COPY --from=build /mailbear /bin/mailbear
+RUN chmod +x /bin/mailbear
+
+# Copy config
+RUN mkdir /mailbear/
 COPY config_sample.yml /mailbear/config.yml
 
 WORKDIR /mailbear
 
-RUN chmod +x /mailbear
+
 
 EXPOSE 1234
 VOLUME ["/mailbear"]
 
-CMD ["./mailbear"]
+CMD ["/bin/mailbear"]
