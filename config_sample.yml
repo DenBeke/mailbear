@@ -9,6 +9,8 @@ global:
         from_name: MailBear
     http:
         address: ":1234"
+    metrics:
+        address: ":9090"
     
 
 forms:

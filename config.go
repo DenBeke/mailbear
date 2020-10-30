@@ -25,6 +25,9 @@ type Config struct {
 		HTTP struct {
 			Address string `yaml:"address"`
 		} `yaml:"http"`
+		Metrics struct {
+			Address string `yaml:"address"`
+		} `yaml:"metrics"`
 	} `yaml:"global"`
 	Forms map[string]*Form `yaml:"forms"`
 }
@@ -43,6 +46,9 @@ func (config *Config) Validate() error {
 	}
 	if config.Global.HTTP.Address == "" {
 		return fmt.Errorf("http address must be set")
+	}
+	if config.Global.Metrics.Address == "" {
+		config.Global.Metrics.Address = ":9090"
 	}
 
 	// Check for nil pointer on forms

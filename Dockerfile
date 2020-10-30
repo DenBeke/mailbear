@@ -31,6 +31,7 @@ WORKDIR /mailbear
 
 
 EXPOSE 1234
+EXPOSE 9090
 VOLUME ["/mailbear"]
 
 CMD ["/bin/mailbear"]

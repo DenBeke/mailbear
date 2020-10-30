@@ -6,5 +6,6 @@ services:
     # build: .
     ports:
       - "1234:1234"
+      # - "9090:9090" # for prometheus metrics
     volumes: 
       - ./config.yml:/mailbear/config.yml
