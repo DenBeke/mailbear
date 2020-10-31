@@ -5,7 +5,17 @@ import (
 	"strings"
 
 	"github.com/pkg/errors"
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promauto"
 	"gopkg.in/mail.v2"
+)
+
+var formSubmissionsCounter = promauto.NewCounterVec(
+	prometheus.CounterOpts{
+		Name: "mailbear_form_submissions_total",
+		Help: "How many form submissions handled, partitioned by form name.",
+	},
+	[]string{"form"},
 )
 
 // MailBear will handle all the logic behind the forms.
@@ -64,8 +74,7 @@ func (m *MailBear) SendMail(formSubmission *FormSubmission) error {
 		return fmt.Errorf("form does not exist")
 	}
 
-	// Connect to the server, authenticate, set the sender and recipient,
-	// and send the email all in one step.
+	// Construct mail message
 	msg := mail.NewMessage()
 	msg.SetHeader("From", m.config.Global.SMTP.FromEmail /*, m.config.Global.SMTP.FromName */)
 	msg.SetHeader("To", form.ToEmail...)
@@ -84,10 +93,13 @@ func (m *MailBear) SendMail(formSubmission *FormSubmission) error {
 		d.StartTLSPolicy = mail.NoStartTLS
 	}
 
-	// Send the email to Bob, Cora and Dan.
+	// Send the actual mail
 	if err := d.DialAndSend(msg); err != nil {
 		return errors.Wrap(err, "couldn't send the email")
 	}
+
+	// Prometheus metrics for form submissions
+	formSubmissionsCounter.With(prometheus.Labels{"form": form.HumanReadableName}).Add(1)
 
 	return nil
 }

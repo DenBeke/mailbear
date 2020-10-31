@@ -23,5 +23,9 @@ func GetConfigFromFile(configFile string) (config *Config, err error) {
 		return
 	}
 
+	for name, form := range config.Forms {
+		form.HumanReadableName = name
+	}
+
 	return
 }

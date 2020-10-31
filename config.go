@@ -80,9 +80,10 @@ func (config *Config) Validate() error {
 
 // Form represents the form in the config
 type Form struct {
-	Key            string   `yaml:"key"`
-	AllowedDomains []string `yaml:"allowed_domains"`
-	ToEmail        []string `yaml:"to_email"`
+	HumanReadableName string   `yaml:"-"` // this is set while parsing the whole config file based on the key of the dict
+	Key               string   `yaml:"key"`
+	AllowedDomains    []string `yaml:"allowed_domains"`
+	ToEmail           []string `yaml:"to_email"`
 }
 
 // Validate checks for all the required values in a form
