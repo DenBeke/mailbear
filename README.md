@@ -71,6 +71,11 @@ Once MailBear is running you can send requests with form data in the JSON body:
         -d '{"name":"Joe","email":"joe@example.com", "subject": "Some subject", "content": "Maecenas faucibus mollis interdum. Sed posuere consectetur est at lobortis."}'
 
 
+## Metrics
+
+Prometheus metrics can be found on `:9090/metrics` by default. To get statistics of submissions per form use this metric: `mailbear_form_submissions_total{form="some-form-name"}`.
+
+
 ## Acknowledgements
 
 * [github.com/labstack/echo](https://github.com/labstack/echo)
@@ -78,7 +83,8 @@ Once MailBear is running you can send requests with form data in the JSON body:
 * [github.com/go-yaml/yaml](https://github.com/go-yaml/yaml)
 * [github.com/go-mail/mail](https://github.com/go-mail/mail)
 * [github.com/badoux/checkmail](https://github.com/badoux/checkmail)
-
+* [github.com/globocom/echo-prometheus](https://github.com/globocom/echo-prometheus)
+* [github.com/prometheus/client_golang](https://github.com/prometheus/client_golang)
 
 
 ## Author
