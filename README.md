@@ -34,41 +34,43 @@ Copy `config_sample.yml` to `config.yml` and run the server:
 
 Configuration is very simple. Just create as many forms as you want in `config.yml`:
 
+```yaml
+global:
+    smtp:
+        host: smtp.example.com
+        port: 25
+        user:
+        password:
+        disable_tls: true
+        from_email: no-reply@example.com
+        from_name: MailBear
+    http:
+        address: ":1234"
 
-    global:
-        smtp:
-            host: smtp.example.com
-            port: 25
-            user:
-            password:
-            disable_tls: true
-            from_email: no-reply@example.com
-            from_name: MailBear
-        http:
-            address: ":1234"
-    
 
-    forms:
-        some-form-name:
-            key: some-random-key
-            allowed_domains:
-                - localhost:8080
-                - example.com
-            to_email:
-                - recepient@example.com
-
+forms:
+    some-form-name:
+        key: some-random-key
+        allowed_domains:
+            - localhost:8080
+            - example.com
+        to_email:
+            - recepient@example.com
+```
 
 
 ## Usage
 
 Once MailBear is running you can send requests with form data in the JSON body:
 
-    curl \
-        -X POST \
-        http://localhost:1234/api/v1/form/some-random-key \
-        -H 'Content-Type: application/json' \
-        -H 'Origin: http://localhost:8080' \
-        -d '{"name":"Joe","email":"joe@example.com", "subject": "Some subject", "content": "Maecenas faucibus mollis interdum. Sed posuere consectetur est at lobortis."}'
+```bash
+curl \
+    -X POST \
+    http://localhost:1234/api/v1/form/some-random-key \
+    -H 'Content-Type: application/json' \
+    -H 'Origin: http://localhost:8080' \
+    -d '{"name":"Joe","email":"joe@example.com", "subject": "Some subject", "content": "Maecenas faucibus mollis interdum. Sed posuere consectetur est at lobortis."}'
+```
 
 
 
