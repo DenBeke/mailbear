@@ -75,6 +75,10 @@ Once MailBear is running you can send requests with form data in the JSON body:
 
 Prometheus metrics can be found on `:9090/metrics` by default. To get statistics of submissions per form use this metric: `mailbear_form_submissions_total{form="some-form-name"}`.
 
+A Grafana dashboard for these metrics is available here: [./grafana/dashboard.json](grafana/dashboard.json)
+
+[![](grafana/dashboard_small.png)](grafana/dashboard.png)
+
 
 ## Acknowledgements
 
